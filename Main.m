@@ -4,7 +4,6 @@ t = 10;
 p = 581.297;
 f = 2.025;
 
-
 % Longitud de onda de refencia
 l0 = 500;
 [n0, m0] = indiceref(l0, p, t, f);
@@ -16,7 +15,7 @@ l0 = 500;
 Z = [5	10 15 20 25 30 35 40 45 50 55 60 65 70 75 80];
 L = [350, 500, 920];
 
-% Estos valores son para dibujar el arcoirs
+% Estos valores son para dibujar el arcoirs o líneas contínuas
 % resx = 900;
 % Z = linspace(0,80,resx);
 % resy = 600;
@@ -42,7 +41,6 @@ for i = 1:length(L)
 end
 
 %% Calculamos el Seeing
-
 tabla_seeing = zeros(length(L), length(Z));
 for i = 1:length(L)
     for j = 1:length(Z)
@@ -53,8 +51,7 @@ end
 
 
 %% Ahora que lo tenemos calculado, sólo falta dibujarlo
-% Tenemos un Booleano para ver si dibujamos el Seeing. Nos interesa ser
-%capaces de distinguir porque ralentiza mucho el cómputo.
+% Tenemos un Booleano para ver si dibujamos el Seeing y/o la leyenda
 
 Incluimos_seeing = 1;
 Incluimos_leyenda = 1;
@@ -103,7 +100,10 @@ else
 
 end
 
-% Tamaño de la fibra óptica
+% Dibujar el tamaño de la fibra óptica.
+% 1- círculos centrados en 0
+% 2- línea horizontal a la altura de 1.8 arcsec.
+
 F_O = 1;
 if F_O==1
     Fibra = zeros(size(Z));
